@@ -218,7 +218,7 @@ public class HttpHandlerAspect {
         // using @IsEnabled like this avoids ThreadContext lookup for common case
         @IsEnabled
         public static boolean isEnabled(@BindParameter Integer statusCode) {
-            return statusCode >= 500 || JavaHttpServerPluginProperties.traceErrorOn4xxResponseCode()
+            return statusCode >= 500 && statusCode != 503 || JavaHttpServerPluginProperties.traceErrorOn4xxResponseCode()
                     && statusCode >= 400;
         }
 

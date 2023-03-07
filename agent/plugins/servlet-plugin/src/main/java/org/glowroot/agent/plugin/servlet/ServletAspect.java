@@ -331,7 +331,7 @@ public class ServletAspect {
         }
 
         private static boolean captureAsError(int statusCode) {
-            return statusCode >= 500
+            return statusCode >= 500 && statusCode != 503
                     || ServletPluginProperties.traceErrorOn4xxResponseCode() && statusCode >= 400;
         }
     }
